@@ -10,7 +10,7 @@ public class EmployeePayrollData {
         this.employeeName = employeeName;
         this.employeeSalary = employeeSalary;
 	}
-
+    //Creating Method for string to collect all data
     @Override
     public String toString() {
     	

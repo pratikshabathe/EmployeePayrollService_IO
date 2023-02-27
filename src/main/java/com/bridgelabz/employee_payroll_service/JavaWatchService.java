@@ -41,7 +41,7 @@ public class JavaWatchService {
 	        });
 	    }
 
-	    @SuppressWarnings({"rawtypes", "unchecked"})
+	    @SuppressWarnings({ "rawtypes", "unchecked" })
 	    public void processEvents() {
 	        while (true) {
 	            WatchKey key;
@@ -80,5 +80,6 @@ public class JavaWatchService {
 	                    break;
 	            }
 	        }
+
 	    }
 }

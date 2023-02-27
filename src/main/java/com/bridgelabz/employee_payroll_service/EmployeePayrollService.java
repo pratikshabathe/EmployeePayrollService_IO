@@ -10,10 +10,14 @@ import java.util.Scanner;
 
 public class EmployeePayrollService {
 	
-	private List<EmployeePayrollData> employeePayrollList = new ArrayList<EmployeePayrollData>();
+	 //creating object
+    private List<EmployeePayrollData> employeePayrollList = new ArrayList<EmployeePayrollData>();
     Scanner scanner = new Scanner(System.in);
-    private static final String FILE_PATH = "C:\\Users\\User\\Desktop";
+    private static final String FILE_PATH = "C:\\Users\\shubh\\OneDrive\\Desktop\\New folder (2)";
 
+    /*
+     * Creating method to print data
+     */
     public void readEmployeeDataFromConsole() {
         System.out.println("Enter Employee Id");
         int id = scanner.nextInt();
@@ -23,12 +27,15 @@ public class EmployeePayrollService {
         int salary = scanner.nextInt();
         employeePayrollList.add(new EmployeePayrollData(id, Name, salary));
     }
+
     public void writeEmployeeDataInConsole() {
         System.out.println("Writing Employee Pay Roll Data \n" + employeePayrollList);
     }
+
     public void addEmployee(EmployeePayrollData employee) {
         employeePayrollList.add(employee);
     }
+
     public void writeEmployeeDataToFile() {
         checkFile();
         StringBuffer empBuffer = new StringBuffer();
@@ -42,6 +49,7 @@ public class EmployeePayrollService {
             e.printStackTrace();
         }
     }
+
     private void checkFile() {
         File file = new File(FILE_PATH);
         try {
@@ -53,6 +61,7 @@ public class EmployeePayrollService {
             System.err.println("Problem encountered while creating a file");
         }
     }
+
     public long countEntries() {
         long entries = 0;
         try {
@@ -62,6 +71,7 @@ public class EmployeePayrollService {
         }
         return entries;
     }
+
     public void printData() {
         try {
             Files.lines(Paths.get(FILE_PATH)).forEach(System.out::println);
@@ -69,8 +79,19 @@ public class EmployeePayrollService {
             e.printStackTrace();
         }
     }
+
+    public long readDataFromFile() {
+        try {
+            String data = Files.readString(Paths.get(FILE_PATH));
+            System.out.println(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return countEntries();
+    }
     
     public static void main(String[] args) {
+    	//creating the object for accessing the method
         EmployeePayrollService employeePayrollService = new EmployeePayrollService();
         System.out.println("Welcome to employee payRoll");
         employeePayrollService.readEmployeeDataFromConsole();

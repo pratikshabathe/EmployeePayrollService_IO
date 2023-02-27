@@ -40,4 +40,10 @@ public class EmployeePayrollTest {
 	        System.out.println("Number of entries are " + entries);
 	        Assert.assertEquals(3, entries);
 	    }
+	    @Test
+	    public void givenFileOnReadindFromFileShouldMatchEmployeeCount() {
+	        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+	        long entries = employeePayrollService.readDataFromFile();
+	        assertEquals(3, entries);
+	    }
 }
