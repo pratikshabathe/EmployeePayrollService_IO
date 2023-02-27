@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class JavaWatchService {
 
-	 private WatchService watcher;
+		private WatchService watcher;
 	    private Map<WatchKey, Path> dirWatchers;
 
 	    public JavaWatchService(Path dir) throws IOException {
@@ -24,11 +24,13 @@ public class JavaWatchService {
 	        this.dirWatchers = new HashMap<WatchKey, Path>();
 	        scanAndRegisterDirectories(dir);
 	    }
+
 	    private void registerDirWatchers(Path dir) throws IOException {
 	        WatchKey key = dir.register(watcher, StandardWatchEventKinds.ENTRY_MODIFY, StandardWatchEventKinds.ENTRY_CREATE,
 	                StandardWatchEventKinds.ENTRY_DELETE);
 	        dirWatchers.put(key, dir);
 	    }
+
 	    private void scanAndRegisterDirectories(final Path start) throws IOException {
 	        Files.walkFileTree(start, new SimpleFileVisitor<Path>() {
 	            @Override
@@ -38,7 +40,8 @@ public class JavaWatchService {
 	            }
 	        });
 	    }
-	    @SuppressWarnings({ "rawtypes", "unchecked" })
+
+	    @SuppressWarnings({"rawtypes", "unchecked"})
 	    public void processEvents() {
 	        while (true) {
 	            WatchKey key;
