@@ -8,6 +8,7 @@ public class EmployeePayrollService {
 	
 	private List<EmployeePayrollData> employeePayrollList = new ArrayList<EmployeePayrollData>();
     Scanner scanner = new Scanner(System.in);
+
     public void readEmployeeDataFromConsole() {
         System.out.println("Enter Employee Id");
         int id = scanner.nextInt();
@@ -17,15 +18,16 @@ public class EmployeePayrollService {
         int salary = scanner.nextInt();
         employeePayrollList.add(new EmployeePayrollData(id, Name, salary));
     }
-    public void writeEmployeeDataInConsole()
+
+    public void writeEmployeeDataInConsole() 
     {
-        System.out.println("Writing Employee Pay Roll Data \n" + employeePayrollList);
- 
-	}
+        System.out.println("Writing Employee_PayRoll Data \n" + employeePayrollList);
+    }
+    
     public static void main(String[] args) {
         EmployeePayrollService employeePayrollService = new EmployeePayrollService();
         System.out.println("Welcome to the Employee_Payroll_Services");
-        employeePayrollService.readEmployeeDataFromConsole();
+		employeePayrollService.readEmployeeDataFromConsole();
         employeePayrollService.writeEmployeeDataInConsole();
     }
 }
